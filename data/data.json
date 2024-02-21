@@ -1,0 +1,95 @@
+{
+    "museums": [
+      {
+        "title": "Boijmans Van Beuningen",
+        "description": "Museum for fine arts with an extensive collection of paintings and sculptures.",
+        "latitude": 51.9139,
+        "longitude": 4.4714
+      },
+      {
+        "title": "Kunsthal Rotterdam",
+        "description": "Contemporary art museum showcasing a diverse range of exhibitions and installations.",
+        "latitude": 51.9124,
+        "longitude": 4.4768
+      },
+      {
+        "title": "Maritime Museum",
+        "description": "Explore the maritime history of Rotterdam through exhibits and interactive displays.",
+        "latitude": 51.9107,
+        "longitude": 4.4844
+      },
+      {
+        "title": "Nederlands Fotomuseum",
+        "description": "Dedicated to photography, featuring a collection of Dutch and international photographic works.",
+        "latitude": 51.9146,
+        "longitude": 4.4943
+      },
+      {
+        "title": "Chabot Museum",
+        "description": "Museum housed in a modernist villa displaying works of the Dutch sculptor and painter Henk Chabot.",
+        "latitude": 51.9047,
+        "longitude": 4.4725
+      },
+      {
+        "title": "Natural History Museum Rotterdam",
+        "description": "Discover the natural world with exhibits on geology, paleontology, and biology.",
+        "latitude": 51.9192,
+        "longitude": 4.4831
+      },
+      {
+        "title": "Wereldmuseum",
+        "description": "Museum featuring artifacts from cultures around the world, with a focus on ethnography and anthropology.",
+        "latitude": 51.9076,
+        "longitude": 4.4723
+      },
+      {
+        "title": "Havenmuseum",
+        "description": "Open-air maritime museum showcasing historic ships and harbor-related exhibits.",
+        "latitude": 51.9098,
+        "longitude": 4.4845
+      },
+      {
+        "title": "Witte de With Center for Contemporary Art",
+        "description": "Contemporary art center hosting exhibitions, events, and artist residencies.",
+        "latitude": 51.9175,
+        "longitude": 4.4778
+      },
+      {
+        "title": "Historisch Museum Rotterdam",
+        "description": "Museum focusing on the history of Rotterdam with exhibits on its development and cultural heritage.",
+        "latitude": 51.9214,
+        "longitude": 4.4803
+      },
+      {
+        "title": "Natuurhistorisch Museum Rotterdam",
+        "description": "Natural history museum featuring exhibits on flora, fauna, and the geological history of the region.",
+        "latitude": 51.9191,
+        "longitude": 4.4866
+      },
+      {
+        "title": "Cube Houses Museum",
+        "description": "Experience life inside the iconic Cube Houses with a museum showcasing their architecture and history.",
+        "latitude": 51.9224,
+        "longitude": 4.4883
+      },
+      {
+        "title": "Het Nieuwe Instituut",
+        "description": "Institute for architecture, design, and digital culture with exhibitions and research programs.",
+        "latitude": 51.9235,
+        "longitude": 4.4889
+      },
+      {
+        "title": "Museum Rotterdam",
+        "description": "City history museum covering the development of Rotterdam from medieval times to the present.",
+        "latitude": 51.9179,
+        "longitude": 4.4852
+      },
+      {
+        "title": "De Kunsthal",
+        "description": "Rotterdam's versatile art space featuring a mix of visual arts, design, and contemporary culture.",
+        "latitude": 51.9121,
+        "longitude": 4.4761
+      }
+    ]
+  }
+  
