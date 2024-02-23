@@ -33,12 +33,14 @@ export default function App() {
         >
           {(props) => <ListScreen {...props} museums={museums} />}
         </Tab.Screen>
+
         <Tab.Screen
           name="Map"
           options={{ title: 'Map' }}
         >
           {(props) => <MapScreen {...props} museums={museums} />}
         </Tab.Screen>
+        
         <Tab.Screen name="Saved" component={SavedScreen} />
         <Tab.Screen name="settings" component={SettingsScreen}/>
       </Tab.Navigator>
