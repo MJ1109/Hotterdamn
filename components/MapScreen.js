@@ -7,6 +7,7 @@ const MapScreen = ({ museums }) => {
     <View style={styles.container}>
       <MapView
         style={styles.map}
+        // initialize region to Rotterdam
         initialRegion={{
           latitude: 51.9194,
           longitude: 4.4792,

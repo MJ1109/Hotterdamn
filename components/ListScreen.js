@@ -1,11 +1,15 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage from the correct package
+import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ListScreen = ({ museums }) => {
-  const handleShowOnMap = (latitude, longitude) => {
-    // Implement logic to show museum on map
-    console.log('Show on Map:', latitude, longitude);
+  const navigation = useNavigation();
+
+  const handleShowOnMap = (item) => {
+    // Navigate to MapScreen and pass museum details
+    navigation.navigate('Map', { museum: item });
+    console.log(item);
   };
 
   const handleSaveMuseum = async (museum) => {
@@ -42,7 +46,7 @@ const ListScreen = ({ museums }) => {
             {/* Button to send coords of museum to Map */}
             <TouchableOpacity
               style={[styles.button, { backgroundColor: '#3498db' }]}
-              onPress={() => handleShowOnMap(item.latitude, item.longitude)}>
+              onPress={() => handleShowOnMap(item)}>
               <Text style={styles.buttonText}>Show on Map</Text>
             </TouchableOpacity>
 

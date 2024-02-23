@@ -7,6 +7,7 @@ import ListScreen from './components/ListScreen';
 import MapScreen from './components/MapScreen';
 import SavedScreen from './components/SavedScreen';
 import SettingsScreen from './components/SettingsScreen';
+
 import { fetchMuseums } from './components/api'; 
 
 const Tab = createBottomTabNavigator();
@@ -40,7 +41,7 @@ export default function App() {
         >
           {(props) => <MapScreen {...props} museums={museums} />}
         </Tab.Screen>
-        
+
         <Tab.Screen name="Saved" component={SavedScreen} />
         <Tab.Screen name="settings" component={SettingsScreen}/>
       </Tab.Navigator>
