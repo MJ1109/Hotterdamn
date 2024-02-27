@@ -39,7 +39,7 @@ export default function App() {
           name="Map"
           options={{ title: 'Map' }}
         >
-          {(props) => <MapScreen {...props} museums={museums} />}
+        {(props) => <MapScreen {...props} museums={museums} />}
         </Tab.Screen>
 
         <Tab.Screen name="Saved" component={SavedScreen} />

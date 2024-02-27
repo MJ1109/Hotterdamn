@@ -8,7 +8,7 @@ const ListScreen = ({ museums }) => {
 
   const handleShowOnMap = (item) => {
     // Navigate to MapScreen and pass museum details
-    navigation.navigate('Map', { museum: item });
+    navigation.navigate('Map', { museum: item, zoomToMuseum: true });
     console.log(item);
   };
 

@@ -1,14 +1,67 @@
+// import React, { useEffect } from 'react';
+// import { StyleSheet, View, Dimensions, } from 'react-native';
+// import MapView, { Marker } from 'react-native-maps';
+
+// const MapScreen = ({ museums }) => {
+//   return (
+//     <View style={styles.container}>
+//       <MapView
+//         style={styles.map}
+//         // initialize region to Rotterdam
+//         initialRegion={{
+//           latitude: 51.9194,
+//           longitude: 4.4792,
+//           latitudeDelta: 0.1,
+//           longitudeDelta: 0.1,
+//         }}
+//       >
+//         {museums.map((museum) => (
+//           <Marker
+//             key={museum.title}
+//             coordinate={{
+//               latitude: museum.latitude,
+//               longitude: museum.longitude,
+//             }}
+//             title={museum.title}
+//             description={museum.description}
+//           />
+//         ))}
+//       </MapView>
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//   },
+//   map: {
+//     width: Dimensions.get('window').width,
+//     height: Dimensions.get('window').height,
+//   },
+// });
+
+// export default MapScreen;
+
 import React, { useEffect } from 'react';
-import { StyleSheet, View, Dimensions, } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
-const MapScreen = ({ museums }) => {
+const MapScreen = ({ museums, route }) => {
+  const { params } = route;
+  const museum = params?.museum || null;
+  const zoomToMuseum = params?.zoomToMuseum || false;
+
   return (
     <View style={styles.container}>
       <MapView
         style={styles.map}
-        // initialize region to Rotterdam
-        initialRegion={{
+        initialRegion={zoomToMuseum ? {
+          latitude: museum.latitude,
+          longitude: museum.longitude,
+          latitudeDelta: 0.02,
+          longitudeDelta: 0.02,
+        } : {
           latitude: 51.9194,
           longitude: 4.4792,
           latitudeDelta: 0.1,
@@ -30,6 +83,7 @@ const MapScreen = ({ museums }) => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
