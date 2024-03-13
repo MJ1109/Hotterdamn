@@ -1,15 +1,35 @@
 // SettingsScreen.js
 
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, SafeAreaView, Button, StyleSheet } from 'react-native';
 
-const SettingsScreen = () => {
+const SettingsScreen = ({theme, setTheme}) => {
+  const [oppositeTheme, setOppositeTheme] = useState(theme === 'dark' ? 'light' : 'dark')
+
+  useEffect(() => {
+    setOppositeTheme(theme === 'dark' ? 'light' : 'dark')
+  }, [theme])
+
+  function toggleTheme(currentTheme){
+    setTheme(oppositeTheme)
+  }
+
   return (
-    <View>
-      <Text>Settings Screen</Text>
-      {/* Add your settings-related components here */}
+    <View style={styles.container}>
+      <Button
+        title={'change theme to ' + oppositeTheme}
+        onPress={ () => toggleTheme(theme)}
+      />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default SettingsScreen;

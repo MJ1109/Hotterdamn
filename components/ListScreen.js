@@ -3,7 +3,7 @@ import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const ListScreen = ({ museums }) => {
+const ListScreen = ({ museums, theme }) => {
   const navigation = useNavigation();
 
   const handleShowOnMap = (item) => {
@@ -31,17 +31,17 @@ const ListScreen = ({ museums }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>List Screen</Text>
+    <View style={[styles.container, {backgroundColor: theme === 'dark' ? '#292928' : '#f0f0f0'}]}>
+      <Text style={[styles.heading, {color: theme === 'dark' ? '#fff' : '#111'}]}>List Screen</Text>
 
       {/* List of Museums */}
       <FlatList
         data={museums}
         keyExtractor={(item) => item.title}
         renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.description}>{item.description}</Text>
+          <View style={[styles.card, {backgroundColor: theme === 'dark' ? '#424241' : 'white'}]}>
+            <Text style={[styles.title, {color: theme === 'dark' ? '#fff' : '#111'}]}>{item.title}</Text>
+            <Text style={[styles.description, {color: theme === 'dark' ? '#fff' : '#111'}]}>{item.description}</Text>
 
             {/* Button to send coords of museum to Map */}
             <TouchableOpacity
@@ -65,9 +65,8 @@ const ListScreen = ({ museums }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1,  
     padding: 10,
-    backgroundColor: '#f0f0f0',
   },
   heading: {
     fontSize: 20,
@@ -75,7 +74,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   card: {
-    backgroundColor: 'white',
     borderRadius: 7,
     padding: 10,
     marginBottom: 10,
