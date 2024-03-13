@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, View, Dimensions, TouchableOpacity, Text } from 'react-native';
-import MapView, { Marker, Callout } from 'react-native-maps';
+import MapView, { Marker, Callout, PROVIDER_GOOGLE } from 'react-native-maps';
 
-const MapScreen = ({ museums, route, navigation }) => {
+const MapScreen = ({ museums, route, navigation, theme }) => {
   const { params } = route;
   const selectedMuseum = params?.museum || null;
   const zoomToMuseum = params?.zoomToMuseum || false;
@@ -50,7 +50,8 @@ const MapScreen = ({ museums, route, navigation }) => {
   return (
     <View style={styles.container}>
       <MapView
-        style={styles.map}
+        provider={PROVIDER_GOOGLE}
+        // style={styles.map}
         initialRegion={
           zoomToMuseum
             ? {
@@ -71,6 +72,8 @@ const MapScreen = ({ museums, route, navigation }) => {
         showsMyLocationButton={true}
         showsCompass={true}
         showsTraffic={true}
+        userInterfaceStyle={theme}
+        style={styles.map}
       >
         {markers.map((marker) => (
           <Marker
@@ -99,7 +102,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    height: Dimensions.get('window').height
   },
 });
 
