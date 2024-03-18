@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, View, Dimensions, Text } from 'react-native';
+import { StyleSheet, View, Dimensions, Text, TouchableOpacity } from 'react-native';
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from 'react-native-maps';
 
-const MapScreen = ({ museums, navigation, theme }) => {
+const MapScreen = ({ museums, route, navigation, theme }) => {
+  const { params } = route;
+  const selectedMuseum = params?.museum || null;
+  const zoomToMuseum = params?.zoomToMuseum || false;
   const mapView = useRef(null);
   const [markers, setMarkers] = useState([]);
 
@@ -21,21 +24,43 @@ const MapScreen = ({ museums, navigation, theme }) => {
     setMarkers(museumMarkers);
   }, [museums]);
 
-  const handleShowOnList = (title) => {
-    // Navigate to the list screen with the selected museum's title
-    navigation.navigate('List', { museum: { title } });
-  };
+  useEffect(() => {
+    // Focus on the selected museum when the component mounts
+    if (mapView.current && selectedMuseum) {
+      mapView.current.fitToCoordinates(
+        [
+          {
+            latitude: selectedMuseum.latitude,
+            longitude: selectedMuseum.longitude,
+          },
+        ],
+        {
+          edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+          animated: true,
+        }
+      );
+    }
+  }, [selectedMuseum]);
 
   return (
     <View style={styles.container}>
       <MapView
         provider={PROVIDER_GOOGLE}
-        initialRegion={{
-          latitude: 51.9194,
-          longitude: 4.4792,
-          latitudeDelta: 0.1,
-          longitudeDelta: 0.1,
-        }}
+        initialRegion={
+          zoomToMuseum
+            ? {
+                latitude: selectedMuseum.latitude,
+                longitude: selectedMuseum.longitude,
+                latitudeDelta: 0.02,
+                longitudeDelta: 0.02,
+              }
+            : {
+                latitude: 51.9194,
+                longitude: 4.4792,
+                latitudeDelta: 0.1,
+                longitudeDelta: 0.1,
+              }
+        }
         ref={mapView}
         showsUserLocation={true}
         showsMyLocationButton={true}
@@ -45,14 +70,13 @@ const MapScreen = ({ museums, navigation, theme }) => {
         style={styles.map}
       >
         {markers.map((marker) => (
-          <Marker
-            key={marker.key}
-            coordinate={marker.coordinate}
-            title={marker.title}
-            description={marker.description}
-            // onPress={() => handleShowOnList(marker.title)}
-          />
-        ))}
+         <Marker
+         key={marker.key}
+         coordinate={marker.coordinate}
+         title={marker.title}
+         description={marker.description}
+       />
+     ))}
       </MapView>
     </View>
   );
