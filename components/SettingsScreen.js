@@ -1,5 +1,3 @@
-// SettingsScreen.js
-
 import React, { useEffect, useState } from 'react';
 import { View, Text, SafeAreaView, Button, StyleSheet } from 'react-native';
 
